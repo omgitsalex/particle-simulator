@@ -22,4 +22,4 @@ end
 setup(ARGF)
 
 world = Simulation.new(@board.layout.transpose).board
-print prettify(world)
+STDOUT.write prettify(world)
