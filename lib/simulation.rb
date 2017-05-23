@@ -20,6 +20,10 @@ class Simulation
 	end
 
 	def provide_sorted(fallable_count, length)
+		# returns a sorted column by getting the count of "fallables" ("." or ":")
+		# builds new segment with fallables, then pads the remainder with empty space
+		# finally, reverses it so segment is in the correct order
+
 		sorted = []
 		pending_fallables = fallable_count
 
@@ -50,6 +54,9 @@ class Simulation
 
 	private 	
 	def handle_t(array)
+		# splits array into segments bordered by Ts and sorts each segment
+		# returns sorted array
+
 		sorted_array = []
 
 		while array.index("T") != nil
@@ -61,11 +68,5 @@ class Simulation
 
 		sorted_array.push(provide_sorted(count_fallables(array), array.length))
 		sorted_array.flatten
-	end
-
-	def prettify(sorted_array)
-		transposed = sorted_array.transpose
-		transposed.each {|row| row.push(["\n"])}
-		transposed.flatten.join
 	end
 end
