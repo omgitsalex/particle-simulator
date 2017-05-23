@@ -61,5 +61,9 @@ describe Simulation do
 		it "respects multiple Ts" do
 			expect(@simulation.sort_column([":", " ", "T", ".", " ", "T", ":", " "])).to eql [" ", ":", "T", " ", ".", "T", " ", ":"]
 		end
+
+		it "respects an arbitrary number of multiple Ts" do
+			expect(@simulation.sort_column([":", " ", "T", ".", " ", "T", ":", " ", ":", " ", "T", ".", " ", "T", ":", " "])).to eql [" ", ":", "T", " ", ".", "T", " ", " ", ":", ":", "T", " ", ".", "T", " ", ":"]
+		end
 	end
 end
