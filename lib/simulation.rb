@@ -5,6 +5,16 @@ class Simulation
 		@board = sort_columns(board)
 	end
 
+	def sort_columns(array)
+		sorted_columns = []
+		
+		array.each do |e|
+			sorted_columns.push(sort_column(e))
+		end
+
+		prettify(sorted_columns)
+	end
+
 	def count_fallables(column)
 		column.count(".") + (column.count(":") * 2)
 	end
@@ -30,6 +40,15 @@ class Simulation
 		sorted.reverse
 	end
 
+	def sort_column(column)
+		if column.include?("T")
+			handle_t(column)
+		else
+			provide_sorted(count_fallables(column), column.length)
+		end
+	end
+
+	private 	
 	def handle_t(array)
 		sorted_array = []
 
@@ -44,21 +63,9 @@ class Simulation
 		sorted_array.flatten
 	end
 
-	def sort_column(column)
-		if column.include?("T")
-			handle_t(column)
-		else
-			provide_sorted(count_fallables(column), column.length)
-		end
-	end
-
-	def sort_columns(array)
-		sorted_columns = []
-		
-		array.each do |e|
-			sorted_columns.push(sort_column(e))
-		end
-
-		sorted_columns
+	def prettify(sorted_array)
+		transposed = sorted_array.transpose
+		transposed.each {|row| row.push(["\n"])}
+		transposed.flatten.join
 	end
 end

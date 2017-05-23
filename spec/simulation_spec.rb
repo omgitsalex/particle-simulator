@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Simulation do
 	before :each do 
-		@simulation = Simulation.new
+		@simulation = Simulation.new([])
 	end
 
 	describe("#count_fallables") do
