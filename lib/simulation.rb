@@ -1,4 +1,10 @@
 class Simulation
+	attr_reader :board
+
+	def initialize(board)
+		@board = sort_columns(board)
+	end
+
 	def count_fallables(column)
 		column.count(".") + (column.count(":") * 2)
 	end
@@ -44,5 +50,15 @@ class Simulation
 		else
 			provide_sorted(count_fallables(column), column.length)
 		end
+	end
+
+	def sort_columns(array)
+		sorted_columns = []
+		
+		array.each do |e|
+			sorted_columns.push(sort_column(e))
+		end
+
+		sorted_columns
 	end
 end

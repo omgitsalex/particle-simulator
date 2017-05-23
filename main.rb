@@ -1,6 +1,4 @@
-def count_fallables(column)
-	column.count(".") + (column.count(":") * 2)
-end
+require './lib/simulation'
 
 def store_dimensions(columns, rows) 
 	@columns = columns
@@ -33,10 +31,10 @@ def setup(args)
 end
 
 def simulate(board)
-	transposed = board.transpose
+	Simulation.new(board.transpose)
 end
 
 
 
 setup(ARGF)
-print @board.transpose
+print simulate(@board).board

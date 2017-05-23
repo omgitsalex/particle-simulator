@@ -66,4 +66,15 @@ describe Simulation do
 			expect(@simulation.sort_column([":", " ", "T", ".", " ", "T", ":", " ", ":", " ", "T", ".", " ", "T", ":", " "])).to eql [" ", ":", "T", " ", ".", "T", " ", " ", ":", ":", "T", " ", ".", "T", " ", ":"]
 		end
 	end
+
+	describe("#sort_columns") do
+		before :each do 
+			@columns = [[".", ".", " ", " "], [".", "T", " ", " "], [".", " ", "T", " "], [":", ".", " ", " "], [":", ":", ":", ":"]]
+			@solution = [[" ", " ", " ", ":"], [".", "T", " ", " "], [" ", ".", "T", " "], [" ", " ", ".", ":"], [":", ":", ":", ":"]]
+		end
+		
+		it "returns sorted columns" do
+			expect(@simulation.sort_columns(@columns)).to eql @solution
+		end
+	end 
 end
