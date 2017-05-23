@@ -23,4 +23,20 @@ class Simulation
 
 		sorted.reverse
 	end
+
+	def sort_column(column)
+		if column.include?("T")
+			sorted_column = []
+			pivot = column.index("T")
+			front = column[0...pivot]
+			back = column[pivot+1..-1]
+
+			sorted_column.push(provide_sorted(count_fallables(front), front.length))
+			sorted_column.push(["T"])
+			sorted_column.push(provide_sorted(count_fallables(back), back.length))
+			sorted_column.flatten
+		else
+			provide_sorted(count_fallables(column), column.length)
+		end
+	end
 end
