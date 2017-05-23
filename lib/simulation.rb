@@ -24,17 +24,23 @@ class Simulation
 		sorted.reverse
 	end
 
+	def handle_t(array)
+		sorted_array = []
+
+		while array.index("T") != nil
+			segment = array[0...array.index("T")]
+			sorted_array.push(provide_sorted(count_fallables(segment), segment.length))
+			sorted_array.push(["T"])
+			array = array[array.index("T")+1..-1]
+		end
+
+		sorted_array.push(provide_sorted(count_fallables(array), array.length))
+		sorted_array.flatten
+	end
+
 	def sort_column(column)
 		if column.include?("T")
-			sorted_column = []
-			pivot = column.index("T")
-			front = column[0...pivot]
-			back = column[pivot+1..-1]
-
-			sorted_column.push(provide_sorted(count_fallables(front), front.length))
-			sorted_column.push(["T"])
-			sorted_column.push(provide_sorted(count_fallables(back), back.length))
-			sorted_column.flatten
+			handle_t(column)
 		else
 			provide_sorted(count_fallables(column), column.length)
 		end

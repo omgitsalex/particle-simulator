@@ -57,5 +57,9 @@ describe Simulation do
 		it "respects 1 T" do
 			expect(@simulation.sort_column([":", " ", "T", ".", " "])).to eql [" ", ":", "T", " ", "."]
 		end
+
+		it "respects multiple Ts" do
+			expect(@simulation.sort_column([":", " ", "T", ".", " ", "T", ":", " "])).to eql [" ", ":", "T", " ", ".", "T", " ", ":"]
+		end
 	end
 end
