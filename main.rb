@@ -13,5 +13,13 @@ def setup(args)
 	end
 end
 
+def prettify(sorted_array)
+	transposed = sorted_array.transpose
+	transposed.each {|row| row.push(["\n"])}
+	transposed.flatten.join
+end
+
 setup(ARGF)
-print Simulation.new(@board.layout.transpose).board
+
+world = Simulation.new(@board.layout.transpose).board
+print prettify(world)

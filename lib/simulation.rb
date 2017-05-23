@@ -12,11 +12,11 @@ class Simulation
 			sorted_columns.push(sort_column(e))
 		end
 
-		prettify(sorted_columns)
+		sorted_columns
 	end
 
-	def count_fallables(column)
-		column.count(".") + (column.count(":") * 2)
+	def count_fallables(segment)
+		segment.count(".") + (segment.count(":") * 2)
 	end
 
 	def provide_sorted(fallable_count, length)
