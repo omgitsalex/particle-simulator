@@ -13,9 +13,5 @@ def setup(args)
 	end
 end
 
-def simulate(board)
-	Simulation.new(board.layout.transpose)
-end
-
 setup(ARGF)
 print Simulation.new(@board.layout.transpose).board
