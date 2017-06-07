@@ -1,4 +1,4 @@
-# Alex-Wood
+# Particle Simulator
 
 This code simulates falling particles according to the following rules:
 
